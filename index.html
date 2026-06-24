@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chips Website</title>
+  <link rel="icon" type="image/webp" href="images/logo.webp">
+  <meta name="description"
+    content="High-Quality Flexible Packaging Solutions For Snacks That Stand Out On Every Shelf.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Oswald:wght@500;700&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <img src="images/logo.webp" alt="Our Brand Logo" class="preloader-logo">
+      <div class="loading-bar-container">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+      <div class="loading-percentage" id="loading-percentage">0%</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/logo.webp" alt="Our Brand">
+    </div>
+    <nav class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+    <div class="search-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </div>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="hero" id="home">
+    <div class="hero-content">
+      <!-- Left Side Content -->
+      <div class="left-side">
+        <div class="dot-matrix">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <p class="category-text">PREMIUM PACKAGING SNACKS</p>
+        <h1 class="product-title" id="product-title">
+          <span class="highlight">Potato</span><br>Chips
+        </h1>
+        <p class="product-description" id="product-description">Crispy and thinly sliced<br>potato chips that
+          deliver<br>a classic savory crunch.</p>
+
+        <div class="cta-and-dots">
+          <button class="cta-button" id="cta-button">Explore Products <span class="arrow">→</span></button>
+
+        </div>
+        <div class="slider-dots" id="slider-dots"></div>
+      </div>
+
+      <!-- Center Side Content -->
+      <div class="center-side">
+        <div class="background-card" id="background-card">
+          <div class="ingredients-container" id="ingredients-container"></div>
+          <h2 class="large-number" id="large-number">01</h2>
+
+          <div class="product-image-container">
+            <img src="images/potato-chips/potato-chips-image.png" id="main-product-image" alt="Product Image">
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side Content -->
+      <div class="right-side">
+        <!-- Vertical Pagination -->
+        <div class="pagination">
+          <div class="page-numbers" id="page-numbers">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <section class="about-us" id="about">
+    <div class="about-header">
+      <h2 class="about-title">ABOUT <span class="highlight">US</span></h2>
+      <div class="title-underline"></div>
+    </div>
+    <div class="about-content">
+      <div class="about-images">
+        <div class="about-img-main about-animate">
+          <img src="images/about-us-images/about-us-img-1.webp" alt="Almonds">
+        </div>
+        <div class="about-img-top about-animate" style="--anim-delay: 0.1s;">
+          <img src="images/about-us-images/about-us-img-2.webp" alt="Smoky Barbeque Nachos">
+        </div>
+        <div class="about-img-bottom about-animate" style="--anim-delay: 0.2s;">
+          <img src="images/about-us-images/about-us-img-3.webp" alt="Popcorn">
+        </div>
+      </div>
+      <div class="about-text">
+        <h3 class="about-subtitle about-animate" style="--anim-delay: 0.3s;">Why Choose Our Snacks?</h3>
+        <p class="about-description about-animate" style="--anim-delay: 0.4s;">We Bring You A Wide Range Of Delicious Snacks Made With Passion, Precision And The Promise Of Unmatched Quality.</p>
+        
+        <div class="feature-cards">
+          <!-- Feature 1 -->
+          <div class="feature-card about-animate" style="--anim-delay: 0.5s;">
+            <div class="feature-icon" style="background-color: #f1c40f;">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+            </div>
+            <div class="feature-text">
+              <h4>Premium Ingredients</h4>
+              <p>Carefully Selected Raw Materials For Superior Taste And Quality.</p>
+            </div>
+          </div>
+          
+          <!-- Feature 2 -->
+          <div class="feature-card about-animate" style="--anim-delay: 0.6s;">
+            <div class="feature-icon" style="background-color: #e67e22;">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"></path><path d="M22 12A10 10 0 0 1 2 12"></path><path d="M12 2v10"></path></svg>
+            </div>
+            <div class="feature-text">
+              <h4>Authentic Flavours</h4>
+              <p>Traditional And Modern Recipes Crafted For Every Snack Lover.</p>
+            </div>
+          </div>
+          
+          <!-- Feature 3 -->
+          <div class="feature-card about-animate" style="--anim-delay: 0.7s;">
+            <div class="feature-icon" style="background-color: #2ecc71;">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <div class="feature-text">
+              <h4>Innovative Packaging</h4>
+              <p>Designed To Preserve Freshness And Maximize Shelf Appeal.</p>
+            </div>
+          </div>
+          
+          <!-- Feature 4 -->
+          <div class="feature-card about-animate" style="--anim-delay: 0.8s;">
+            <div class="feature-icon" style="background-color: #0984e3;">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+            </div>
+            <div class="feature-text">
+              <h4>Quality Assured</h4>
+              <p>Strict Quality Control Standards For Every Product We Manufacture.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="scroll-container-parent">
+    <h2 class="sticky-heading">Our Premium<br>Snack Categories</h2>
+    <div class="scroll-container">
+      <div class="panel">
+        <h2>Potato<br>Chips</h2>
+        <img src="images/potato-chips/potato-chips-image.png" alt="Potato Chips">
+        <h3>Crispy and thinly sliced potato chips that deliver a classic savory crunch.</h3>
+        <p>READ MORE</p>
+      </div>
+      <div class="panel">
+        <h2>Kerala<br>Banana</h2>
+        <img src="images/kerala-banana-chips/kerala-banana-chips-image.png" alt="Kerala Banana Chips">
+        <h3>Authentic, crunchy banana chips carefully fried in pure coconut oil.</h3>
+        <p>READ MORE</p>
+      </div>
+      <div class="panel">
+        <h2>Nacho<br>Chips</h2>
+        <img src="images/nacho-chips/nacho-chips.png" alt="Nacho Chips">
+        <h3>Crunchy corn tortilla chips loaded with bold and zesty flavors.</h3>
+        <p>READ MORE</p>
+      </div>
+      <div class="panel">
+        <h2>Premium<br>Popcorn</h2>
+        <img src="images/popcorn-chips/popcorn-chips-image.webp" alt="Premium Popcorn">
+        <h3>High-Quality Flexible Packaging Solutions For Snacks That Stand Out.</h3>
+        <p>READ MORE</p>
+      </div>
+      <div class="panel">
+        <h2>Pudina<br>Blast</h2>
+        <img src="images/corn-puff-chips/corn-puff-image.png" alt="Pudina Blast">
+        <h3>Light & Crunchy Corn Puffs Seasoned With Refreshing Mint For A Bold Experience.</h3>
+        <p>READ MORE</p>
+      </div>
+      <div class="panel">
+        <h2>Grain<br>Waves</h2>
+        <img src="images/grain-waves-chips/grain-waves-image.png" alt="Grain Waves">
+        <h3>Delicious multi-grain chips packed with wholesome goodness and irresistible taste.</h3>
+        <p>READ MORE</p>
+      </div>
+      <div class="panel">
+        <h2>Boondhi<br>Mix</h2>
+        <img src="images/boondhi-mix/boondhi-mix-chips-image.png" alt="Boondhi Mix">
+        <h3>A traditional spicy mix perfect for tea time and festive snacking.</h3>
+        <p>READ MORE</p>
+      </div>
+      <div class="panel">
+        <h2>Premium<br>Almond</h2>
+        <img src="images/almond/almond-image.webp" alt="Premium Almond">
+        <h3>Carefully selected premium roasted almonds for a healthy energy boost.</h3>
+        <p>READ MORE</p>
+      </div>
+      <div class="panel">
+        <h2>Potato<br>Crisps</h2>
+        <img src="images/potato-crips/potato-crips.png" alt="Potato Crisps">
+        <h3>Thick cut, gourmet potato crisps seasoned with premium spices.</h3>
+        <p>READ MORE</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Benefits Section -->
+  <section class="benefits-section" id="benefits">
+    <div class="benefits-container">
+      <div class="benefits-header">
+        <h2>Why Choose Our Brand</h2>
+        <p>Discover the cutting-edge advantages of our premium flexible packaging solutions.</p>
+      </div>
+      
+      <div class="benefits-layout">
+        <!-- Left Side: Smaller Radial Orbit -->
+        <div class="radial-orbit-wrapper">
+          <div class="radial-orbit">
+            <!-- Central Hub -->
+            <div class="orbit-center-hub" id="orbit-hub">
+              <div class="hub-content">
+                <h3 id="hub-title">Hover over a benefit</h3>
+                <p id="hub-desc">Explore the cutting-edge advantages of our premium flexible packaging solutions.</p>
+              </div>
+            </div>
+            
+            <!-- Orbiting Nodes -->
+            <div class="orbit-node" data-title="Freshness Protection" data-desc="Advanced barrier technology locks in flavors and aromas.">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+            </div>
+            <div class="orbit-node" data-title="Leak-Proof Sealing" data-desc="High-integrity seals prevent any spillage or contamination.">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+              </div>
+            </div>
+            <div class="orbit-node" data-title="Extended Shelf Life" data-desc="Optimal material structures maximize product longevity.">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+            </div>
+            <div class="orbit-node" data-title="Premium Print Quality" data-desc="Vibrant, high-definition rotogravure printing for maximum shelf appeal.">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </div>
+            </div>
+            <div class="orbit-node" data-title="Reliable Protection" data-desc="Robust puncture and tear resistance for safe transport.">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+            </div>
+            <div class="orbit-node" data-title="Eco-Friendly Options" data-desc="Sustainable and recyclable material choices available.">
+              <div class="node-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Auto-changing images -->
+        <div class="benefits-image-display" id="benefits-image-display">
+          <img src="images/potato-crips/potato-crips.png" alt="Freshness Protection" class="active">
+          <img src="images/almond/almond-image.webp" alt="Leak-Proof Sealing">
+          <img src="images/boondhi-mix/boondhi-mix-chips-image.png" alt="Extended Shelf Life">
+          <img src="images/murukku-images/murukku.png" alt="Premium Print Quality">
+          <img src="images/banner-img/right-side-image.webp" alt="Reliable Protection">
+          <img src="images/banner-img/product-images.webp" alt="Eco-Friendly Options">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll Video Section -->
+  <section class="scroll-video-section" id="scroll-video">
+    <div class="video-bg-container">
+      <canvas id="bg-canvas" class="products-bg-canvas"></canvas>
+      <!-- Text 1 (Comes from Right) -->
+      <div class="scroll-video-content video-text-1">
+        <h2 class="video-title">The Art of <br><span class="text-3d">Snacking</span></h2>
+        <p class="video-desc">Every perfectly cooked batch represents our commitment to exceptional flavor and uncompromising quality.</p>
+      </div>
+
+      <!-- Text 2 (Comes from Left) -->
+      <div class="scroll-video-content video-text-2">
+        <h2 class="video-title">Golden & <br><span class="text-3d">Crunchy</span></h2>
+        <p class="video-desc">Sliced to perfection and fried until golden brown to deliver that ultimate satisfying crunch in every bite.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="category-banner-section">
+    <div class="banner-card">
+      <img src="images/banner-img/right-side-image.webp" class="banner-edge-img" alt="Banner Edge Design">
+      <div class="banner-image">
+        <img src="images/banner-img/product-images.webp" alt="Our Brand Snacks Assortment">
+      </div>
+      <div class="banner-content">
+        <div class="banner-text-group">
+          <h2><span class="highlight-number">8+</span> Delicious Snack Categories</h2>
+          <p>Discover The World Of<br>Our Premium Snacks</p>
+        </div>
+        <a href="#" class="explore-btn">
+          Explore Now
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="contact-header reveal-up">
+      
+      <h2>Get in Touch</h2>
+      <p>We help you find the perfect high-quality flexible packaging solutions for your premium snacks and elevate your business.</p>
+    </div>
+    
+    <div class="contact-container">
+      <div class="contact-left reveal-left">
+        
+        <div class="contact-details">
+          <div class="contact-item-box">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="contact-text">
+              <h4>EMAIL SUPPORT</h4>
+              <p>info@fist-o.com</p>
+              <p>support@fist-o.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item-box">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div class="contact-text">
+              <h4>CONTACT SUPPORT</h4>
+              <p>+91 9994425147</p>
+              <p>+91 7530025147</p>
+            </div>
+          </div>
+
+          <div class="contact-item-box">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="contact-text">
+              <h4>ADDRESS</h4>
+              <p>10/11, Trichy Rd, Sundaram Brothers Layout,<br>Olympus, Ramanathapuram, Coimbatore,<br>Tamil Nadu - 641045</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-card reveal-right">
+        <!-- <div class="form-header">
+          <img src="images/logo.webp" alt="Our Brand" class="form-logo">
+        </div> -->
+        <form class="contact-form">
+          <input type="text" placeholder="Name" required>
+          <input type="email" placeholder="Email" required>
+          <textarea placeholder="Message" rows="4" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients Section -->
+  <section class="clients-section reveal-up" id="clients">
+    <h2 class="clients-title">Our Esteemed Clients</h2>
+    <div class="marquee-wrapper">
+      <div class="marquee-track">
+        <!-- Set 1 -->
+        <div class="client-logo"><img src="images/our-clients/kings-chips.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-3.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-4.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-5.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-6.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-7.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-8.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/potato-chips-logo.webp" alt="Client"></div>
+        
+        <!-- Set 2 -->
+        <div class="client-logo"><img src="images/our-clients/kings-chips.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-3.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-4.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-5.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-6.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-7.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-8.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/potato-chips-logo.webp" alt="Client"></div>
+
+        <!-- Set 3 -->
+        <div class="client-logo"><img src="images/our-clients/kings-chips.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-3.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-4.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-5.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-6.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-7.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-8.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/potato-chips-logo.webp" alt="Client"></div>
+
+        <!-- Set 4 -->
+        <div class="client-logo"><img src="images/our-clients/kings-chips.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-3.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-4.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-5.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-6.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-7.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/logo-8.webp" alt="Client"></div>
+        <div class="client-logo"><img src="images/our-clients/potato-chips-logo.webp" alt="Client"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer reveal-up">
+    <div class="footer-top">
+      <div class="footer-col brand-col">
+        <img src="images/logo.webp" alt="Our Brand" class="footer-logo">
+        <p>High-Quality Flexible Packaging Solutions For Snacks That Stand Out On Every Shelf.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#about">About Us</a>
+        <a href="#products">Products</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#">Potato Chips</a>
+        <a href="#">Kerala Banana</a>
+        <a href="#">Nacho Chips</a>
+        <a href="#">Popcorn Chips</a>
+      </div>
+      
+      <div class="footer-col contact-col">
+        <h4>Contact Us</h4>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>(91) 98765 4321 54</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>support@ourbrand.com</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>10/11, Trichy Rd, Sundaram Brothers Layout, Olympus, Ramanathapuram, Coimbatore, Tamil Nadu - 641045</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; Copyright by Our Brand. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Legal</a>
+        <a href="#">Site Map</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
