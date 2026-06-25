@@ -680,6 +680,63 @@ document.addEventListener('DOMContentLoaded', () => {
   // Call initialization function
   initializePanelCarousels();
 
+  // --- Products Background Video (Scroll Canvas) ---
+  function initializeProductsScrollVideo() {
+    const section = document.getElementById("products");
+    const canvas = document.getElementById("products-bg-canvas");
+    if (!section || !canvas) return;
+
+    const context = canvas.getContext("2d");
+    const frameCount = 144;
+    const images = [];
+    
+    canvas.width = 1920;
+    canvas.height = 1080;
+    
+    // Set initial opacity to 0
+    canvas.style.opacity = 0;
+    // Add transition for smooth fade
+    canvas.style.transition = "opacity 0.3s ease";
+    
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.src = `images/products/background-new-images/${(i + 1).toString().padStart(5, '0')}.webp`;
+      images.push(img);
+    }
+
+    function handleScroll() {
+      const parentRect = section.getBoundingClientRect();
+      const parentTop = window.pageYOffset + parentRect.top;
+      const parentHeight = parentRect.height;
+      const viewportHeight = window.innerHeight;
+
+      const scrollTop = window.scrollY;
+      const scrollProgress = (scrollTop - parentTop) / (parentHeight - viewportHeight);
+      const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+
+      // Fade in the canvas after scrolling starts (e.g., after 5% scroll)
+      if (scrollProgress > 0.05) {
+        canvas.style.opacity = 1;
+      } else {
+        canvas.style.opacity = 0;
+      }
+
+      if (images.length > 0) {
+        const frameIndex = Math.min(frameCount - 1, Math.floor(clampedProgress * frameCount));
+        const img = images[frameIndex];
+        if (img && img.complete) {
+          context.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
+  }
+
+  initializeProductsScrollVideo();
+
   // --- Scroll Video Section Initialization ---
   function initializeScrollVideo() {
     const section = document.getElementById("scroll-video");
@@ -766,71 +823,50 @@ document.addEventListener('DOMContentLoaded', () => {
   // Reinitialize on window resize
   window.addEventListener("resize", initializePanelCarousels);
 
-  // --- Interactive Radial Orbit ---
-  function initRadialOrbit() {
-    const nodes = document.querySelectorAll('.orbit-node');
-    const hubTitle = document.getElementById('hub-title');
-    const hubDesc = document.getElementById('hub-desc');
-    const hubContent = document.querySelector('.hub-content');
-    const images = document.querySelectorAll('.benefits-image-display img');
+  // --- Interactive Benefits Section (aat.js) ---
+  function initBenefitsCards() {
+    if (typeof aat === 'undefined') return;
+    const { ScrollObserver, valueAtPercentage } = aat;
 
-    if (!hubTitle || !hubDesc || nodes.length === 0) return;
+    const cardsContainer = document.querySelector('.cards');
+    const cards = document.querySelectorAll('.card');
+    
+    if (!cardsContainer || cards.length === 0) return;
 
-    let activeIndex = 0;
-    let autoplayInterval;
-
-    function triggerNode(index) {
-      const node = nodes[index];
-      const title = node.getAttribute('data-title');
-      const desc = node.getAttribute('data-desc');
-      
-      hubContent.style.opacity = 0;
-      hubContent.style.transform = 'scale(0.95)';
-      
-      nodes.forEach(n => n.classList.remove('active'));
-      node.classList.add('active');
-
-      images.forEach(img => img.classList.remove('active'));
-      if (images[index]) {
-        images[index].classList.add('active');
+    cardsContainer.style.setProperty('--cards-count', cards.length);
+    // Use a robust way to set card height after CSS is applied
+    setTimeout(() => {
+      cardsContainer.style.setProperty('--card-height', `${cards[0].clientHeight}px`);
+    }, 100);
+    
+    Array.from(cards).forEach((card, index) => {
+      const offsetTop = 20 + index * 20;
+      card.style.paddingTop = `${offsetTop}px`;
+      if (index === cards.length - 1) {
+        return;
       }
-      
-      setTimeout(() => {
-        hubTitle.textContent = title;
-        hubDesc.textContent = desc;
-        hubContent.style.opacity = 1;
-        hubContent.style.transform = 'scale(1)';
-      }, 150);
-    }
-
-    function startAutoplay() {
-      autoplayInterval = setInterval(() => {
-        activeIndex = (activeIndex + 1) % nodes.length;
-        triggerNode(activeIndex);
-      }, 3000); // Change every 3 seconds
-    }
-
-    function stopAutoplay() {
-      clearInterval(autoplayInterval);
-    }
-
-    nodes.forEach((node, idx) => {
-      node.addEventListener('mouseenter', () => {
-        stopAutoplay();
-        activeIndex = idx;
-        triggerNode(idx);
-      });
-      node.addEventListener('mouseleave', () => {
-        startAutoplay();
+      const toScale = 1 - (cards.length - 1 - index) * 0.1;
+      const nextCard = cards[index + 1];
+      const cardInner = card.querySelector('.card__inner');
+      ScrollObserver.Element(nextCard, {
+        offsetTop,
+        offsetBottom: window.innerHeight - card.clientHeight
+      }).onScroll(({ percentageY }) => {
+        cardInner.style.scale = valueAtPercentage({
+          from: 1,
+          to: toScale,
+          percentage: percentageY
+        });
+        cardInner.style.filter = `brightness(${valueAtPercentage({
+          from: 1,
+          to: 0.6,
+          percentage: percentageY
+        })})`;
       });
     });
-
-    // Initialize first node and start auto-play
-    triggerNode(0);
-    startAutoplay();
   }
-
-  initRadialOrbit();
+  
+  setTimeout(initBenefitsCards, 300);
 
   // --- ScrollSpy Navigation ---
   function initScrollSpy() {

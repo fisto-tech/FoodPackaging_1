@@ -1257,6 +1257,16 @@ body {
   width: 100%;
 }
 
+.products-video-wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
 .video-bg-container {
   position: sticky;
   top: 0;
@@ -1623,30 +1633,20 @@ body {
   }
 }
 
-/* --- Interactive Benefits Section --- */
+/* --- Interactive Benefits Section (New Stackable Cards) --- */
 .benefits-section {
-  /* height: 100vh; */
-  padding: 40px 5% 80px; /* Reduced top padding, increased bottom padding to push content up */
-  background: radial-gradient(circle at center, #f1f5f9 0%, #e2e8f0 100%);
-  font-family: var(--primary-font);
+  padding: 40px 5% 80px;
+  background-color: var(--bg-white);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  color: #334155;
-}
-
-.benefits-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  align-items: center;
+  position: relative;
 }
 
 .benefits-header {
   text-align: center;
   margin-bottom: 30px;
 }
-
 .benefits-header h2 {
   font-family: 'Oswald', sans-serif;
   font-size: clamp(32px, 4vw, 56px);
@@ -1656,19 +1656,17 @@ body {
   display: inline-block;
   position: relative;
 }
-
 .benefits-header h2::after {
   content: '';
   position: absolute;
   width: 50%;
   height: 4px;
-  background-color: #f89938; /* Brand orange */
+  background-color: #f89938;
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 2px;
 }
-
 .benefits-header p {
   font-size: 18px;
   color: #475569;
@@ -1677,244 +1675,90 @@ body {
   line-height: 1.6;
 }
 
-.benefits-layout {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 50px;
+.space {
+  height: 10vh;
+}
+.space--small {
+  height: 5vh;
 }
 
-/* Radial Orbit System (Left Side) */
-.radial-orbit-wrapper {
-  position: relative;
-  flex: 0 0 400px;
-  width: 400px;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.radial-orbit {
-  position: relative;
+.cards {
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 1px dashed rgba(59, 130, 246, 0.4);
-  animation: spin 30s linear infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: repeat(var(--cards-count), var(--card-height));
+  gap: 40px 0;
 }
 
-.radial-orbit:hover {
-  animation-play-state: paused;
-}
-
-.orbit-center-hub {
-  position: absolute;
-  width: 190px;
-  height: 190px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  box-sizing: border-box;
-  z-index: 10;
-  animation: spin-reverse 30s linear infinite;
-}
-
-.radial-orbit:hover .orbit-center-hub {
-  animation-play-state: paused;
-}
-
-.hub-content {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.orbit-center-hub h3 {
-  font-family: var(--primary-font);
-  font-size: 20px;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 8px;
-}
-
-.orbit-center-hub p {
-  font-family: var(--primary-font);
-  font-size: 14px;
-  color: #475569;
-  line-height: 1.4;
-}
-
-.orbit-node {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -35px;
-  margin-left: -35px;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 5;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Positioning nodes around the circle (Radius = 200px) */
-.orbit-node:nth-child(2) { transform: rotate(0deg) translate(200px) rotate(0deg); }
-.orbit-node:nth-child(3) { transform: rotate(60deg) translate(200px) rotate(-60deg); }
-.orbit-node:nth-child(4) { transform: rotate(120deg) translate(200px) rotate(-120deg); }
-.orbit-node:nth-child(5) { transform: rotate(180deg) translate(200px) rotate(-180deg); }
-.orbit-node:nth-child(6) { transform: rotate(240deg) translate(200px) rotate(-240deg); }
-.orbit-node:nth-child(7) { transform: rotate(300deg) translate(200px) rotate(-300deg); }
-
-.node-icon {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #0f172a;
-  animation: spin-reverse 30s linear infinite;
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-}
-
-.radial-orbit:hover .node-icon {
-  animation-play-state: paused;
-}
-
-.node-icon svg {
-  width: 28px;
-  height: 28px;
-  stroke: currentColor;
-}
-
-.orbit-node.active .node-icon,
-.orbit-node:hover .node-icon {
-  background-color: #f89938;
-  color: #ffffff;
-  transform: scale(1.15);
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-}
-
-/* Right Side: Image Display */
-.benefits-image-display {
-  position: relative;
-  flex: 1;
-  max-width: 600px;
-  height: 420px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-}
-
-.benefits-image-display img {
-  position: absolute;
+.card {
+  position: sticky;
   top: 0;
-  left: 0;
+}
+
+.card__inner {
+  will-change: transform;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  transform-origin: center top;
+}
+
+.card__image-container {
+  display: flex;
+  width: 45%;
+  flex-shrink: 0;
+}
+
+.card__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transform: translateX(30px) scale(1.05);
-  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-  z-index: 1;
+  aspect-ratio: 1;
 }
 
-.benefits-image-display img.active {
-  opacity: 1;
-  transform: translateX(0) scale(1);
-  z-index: 2;
+.card__content {
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.card__title {
+  padding: 0;
+  margin: 0 0 20px 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #16263a;
 }
 
-@keyframes spin-reverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
-}
-
-@media (max-width: 992px) {
-  .benefits-layout {
-    flex-direction: column;
-    gap: 40px;
-  }
-  .radial-orbit-wrapper {
-    flex: 0 0 400px;
-    width: 400px;
-    height: 400px;
-  }
-  .orbit-center-hub {
-    width: 180px;
-    height: 180px;
-  }
-  .orbit-node:nth-child(2) { transform: rotate(0deg) translate(200px) rotate(0deg); }
-  .orbit-node:nth-child(3) { transform: rotate(60deg) translate(200px) rotate(-60deg); }
-  .orbit-node:nth-child(4) { transform: rotate(120deg) translate(200px) rotate(-120deg); }
-  .orbit-node:nth-child(5) { transform: rotate(180deg) translate(200px) rotate(-180deg); }
-  .orbit-node:nth-child(6) { transform: rotate(240deg) translate(200px) rotate(-240deg); }
-  .orbit-node:nth-child(7) { transform: rotate(300deg) translate(200px) rotate(-300deg); }
-  .benefits-image-display {
-    width: 100%;
-    height: 350px;
-  }
+.card__description {
+  line-height: 1.6;
+  font-size: 18px;
+  color: #475569;
 }
 
 @media (max-width: 768px) {
-  .radial-orbit-wrapper {
-    flex: 0 0 280px;
-    width: 280px;
-    height: 280px;
-    margin: 0 auto;
+  .card__inner {
+    flex-direction: column;
   }
-  .orbit-center-hub {
-    width: 130px;
-    height: 130px;
-    padding: 10px;
+  .card__image-container {
+    width: 100%;
   }
-  .orbit-center-hub h3 {
-    font-size: 14px;
-    margin-bottom: 5px;
+  .card__image {
+    aspect-ratio: 16 / 9;
   }
-  .orbit-center-hub p {
-    font-size: 10px;
+  .card__title {
+    font-size: 32px;
   }
-  .orbit-node {
-    width: 40px;
-    height: 40px;
-    margin-top: -20px;
-    margin-left: -20px;
+  .card__description {
+    font-size: 16px;
   }
-  .orbit-node:nth-child(2) { transform: rotate(0deg) translate(140px) rotate(0deg); }
-  .orbit-node:nth-child(3) { transform: rotate(60deg) translate(140px) rotate(-60deg); }
-  .orbit-node:nth-child(4) { transform: rotate(120deg) translate(140px) rotate(-120deg); }
-  .orbit-node:nth-child(5) { transform: rotate(180deg) translate(140px) rotate(-180deg); }
-  .orbit-node:nth-child(6) { transform: rotate(240deg) translate(140px) rotate(-240deg); }
-  .orbit-node:nth-child(7) { transform: rotate(300deg) translate(140px) rotate(-300deg); }
-  .node-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-  .benefits-image-display {
-    height: 250px;
+  .card__content {
+    padding: 30px 20px;
   }
 }
 

@@ -172,6 +172,9 @@
   </section>
 
   <section id="products" class="scroll-container-parent">
+    <div class="products-video-wrapper">
+      <canvas id="products-bg-canvas" class="products-bg-canvas"></canvas>
+    </div>
     <h2 class="sticky-heading">Our Premium<br>Snack Categories</h2>
     <div class="scroll-container">
       <div class="panel">
@@ -231,90 +234,101 @@
     </div>
   </section>
 
-  <!-- Interactive Benefits Section -->
+  <!-- Interactive Benefits Section (Stackable Cards) -->
   <section class="benefits-section" id="benefits">
-    <div class="benefits-container">
-      <div class="benefits-header">
-        <h2>Why Choose Our Brand</h2>
-        <p>Discover the cutting-edge advantages of our premium flexible packaging solutions.</p>
-      </div>
-      
-      <div class="benefits-layout">
-        <!-- Left Side: Smaller Radial Orbit -->
-        <div class="radial-orbit-wrapper">
-          <div class="radial-orbit">
-            <!-- Central Hub -->
-            <div class="orbit-center-hub" id="orbit-hub">
-              <div class="hub-content">
-                <h3 id="hub-title">Hover over a benefit</h3>
-                <p id="hub-desc">Explore the cutting-edge advantages of our premium flexible packaging solutions.</p>
-              </div>
-            </div>
-            
-            <!-- Orbiting Nodes -->
-            <div class="orbit-node" data-title="Freshness Protection" data-desc="Advanced barrier technology locks in flavors and aromas.">
-              <div class="node-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              </div>
-            </div>
-            <div class="orbit-node" data-title="Leak-Proof Sealing" data-desc="High-integrity seals prevent any spillage or contamination.">
-              <div class="node-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-              </div>
-            </div>
-            <div class="orbit-node" data-title="Extended Shelf Life" data-desc="Optimal material structures maximize product longevity.">
-              <div class="node-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
-            </div>
-            <div class="orbit-node" data-title="Premium Print Quality" data-desc="Vibrant, high-definition rotogravure printing for maximum shelf appeal.">
-              <div class="node-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              </div>
-            </div>
-            <div class="orbit-node" data-title="Reliable Protection" data-desc="Robust puncture and tear resistance for safe transport.">
-              <div class="node-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              </div>
-            </div>
-            <div class="orbit-node" data-title="Eco-Friendly Options" data-desc="Sustainable and recyclable material choices available.">
-              <div class="node-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
-              </div>
-            </div>
+    <div class="benefits-header">
+      <h2>Why Choose Our Brand</h2>
+      <p>Discover the cutting-edge advantages of our premium flexible packaging solutions.</p>
+    </div>
+    
+    <div class="space--small"></div>
+    <div class="cards">
+      <div class="card" data-index="0">
+        <div class="card__inner">
+          <div class="card__image-container">
+            <img class="card__image" src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Freshness Protection" />
+          </div>
+          <div class="card__content">
+            <h3 class="card__title">Freshness Protection</h3>
+            <p class="card__description">
+              Advanced barrier technology locks in flavors and aromas. We ensure that every bite is as fresh and delicious as the day it was packed, extending shelf life while maintaining premium quality.
+            </p>
           </div>
         </div>
-
-        <!-- Right Side: Auto-changing images -->
-        <div class="benefits-image-display" id="benefits-image-display">
-          <img src="images/potato-crips/potato-crips.png" alt="Freshness Protection" class="active">
-          <img src="images/almond/almond-image.webp" alt="Leak-Proof Sealing">
-          <img src="images/boondhi-mix/boondhi-mix-chips-image.png" alt="Extended Shelf Life">
-          <img src="images/murukku-images/murukku.png" alt="Premium Print Quality">
-          <img src="images/banner-img/right-side-image.webp" alt="Reliable Protection">
-          <img src="images/banner-img/product-images.webp" alt="Eco-Friendly Options">
+      </div>
+      <div class="card" data-index="1">
+        <div class="card__inner">
+          <div class="card__image-container">
+            <img class="card__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7QnMbXtDUnpnRFnBmranD55gPAY7uUKA0SGWr62AiMO0ktJuz8yqqUhq5&s=10" alt="Leak-Proof Sealing" />
+          </div>
+          <div class="card__content">
+            <h3 class="card__title">Leak-Proof Sealing</h3>
+            <p class="card__description">
+              High-integrity seals prevent any spillage or contamination. Our innovative sealing process ensures maximum safety and durability during transit and storage.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card" data-index="2">
+        <div class="card__inner">
+          <div class="card__image-container">
+            <img class="card__image" src="https://images.unsplash.com/photo-1606859191214-25806e8e2423?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Extended Shelf Life" />
+          </div>
+          <div class="card__content">
+            <h3 class="card__title">Extended Shelf Life</h3>
+            <p class="card__description">
+              Optimal material structures maximize product longevity. By protecting against oxygen, moisture, and light, our packaging keeps your products perfect for longer.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card" data-index="3">
+        <div class="card__inner">
+          <div class="card__image-container">
+            <img class="card__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-9SaN3CkECNdvCuFJrtDRbtMqN8GXnj_HaQNljWeHMHyCHDZ54EAZnp4&s=10" alt="Premium Print Quality" />
+          </div>
+          <div class="card__content">
+            <h3 class="card__title">Premium Print Quality</h3>
+            <p class="card__description">
+              Vibrant, high-definition rotogravure printing for maximum shelf appeal. Capture your customers' attention instantly with packaging that stands out and tells your brand's story.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card" data-index="4">
+        <div class="card__inner">
+          <div class="card__image-container">
+            <img class="card__image" src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Eco-Friendly Options" />
+          </div>
+          <div class="card__content">
+            <h3 class="card__title">Eco-Friendly Options</h3>
+            <p class="card__description">
+              Sustainable and recyclable material choices available. We are committed to reducing environmental impact without compromising on protection or aesthetic appeal.
+            </p>
+          </div>
         </div>
       </div>
     </div>
+    <div class="space"></div>
   </section>
 
   <!-- Scroll Video Section -->
-  <section class="scroll-video-section" id="scroll-video">
+  <!-- <section class="scroll-video-section" id="scroll-video">
     <div class="video-bg-container">
       <canvas id="bg-canvas" class="products-bg-canvas"></canvas>
-      <!-- Text 1 (Comes from Right) -->
+    
       <div class="scroll-video-content video-text-1">
         <h2 class="video-title">The Art of <br><span class="text-3d">Snacking</span></h2>
         <p class="video-desc">Every perfectly cooked batch represents our commitment to exceptional flavor and uncompromising quality.</p>
       </div>
 
-      <!-- Text 2 (Comes from Left) -->
+      
       <div class="scroll-video-content video-text-2">
         <h2 class="video-title">Golden & <br><span class="text-3d">Crunchy</span></h2>
         <p class="video-desc">Sliced to perfection and fried until golden brown to deliver that ultimate satisfying crunch in every bite.</p>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section class="category-banner-section">
     <div class="banner-card">
@@ -495,6 +509,8 @@
     </div>
   </footer>
 
+  <!-- aat.js for scroll animations -->
+  <script src="https://unpkg.com/aatjs/dist/aat.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
