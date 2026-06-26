@@ -11,34 +11,43 @@ document.addEventListener('DOMContentLoaded', () => {
       progress = 100;
       clearInterval(loadingInterval);
       setTimeout(() => {
-        preloader.classList.add('hidden');
+        if (preloader) preloader.classList.add('hidden');
         setTimeout(() => {
           document.body.classList.add('preloader-done');
-          if (currentIndex === 0 && ingredientsContainer.innerHTML !== '') {
+          if (typeof currentIndex !== 'undefined' && currentIndex === 0 && ingredientsContainer.innerHTML !== '') {
             ingredientsContainer.classList.add('ingredients-enter');
           }
         }, 1500);
       }, 500);
     }
-    loadingBar.style.width = `${progress}%`;
-    loadingText.innerText = `${progress}%`;
+    if (loadingBar) loadingBar.style.width = `${progress}%`;
+    if (loadingText) loadingText.innerText = `${progress}%`;
   }, 100);
+
+  // Mobile Menu Toggle
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
 
   // Products Data (9 items as requested)
   const products = [
     {
       number: "01",
-      titleTop: "Potato",
-      titleBottom: "Chips",
-      description: "Crispy and thinly sliced<br>potato chips that deliver<br>a classic savory crunch.",
+      titleTop: "Premium",
+      titleBottom: "Packaging",
+      description: "Premium quality potato chips<br>sealed in innovative packaging<br>for lasting crispy freshness.",
       color: "#FECD02",
       image: "images/potato-chips/potato-chips-image.png",
       bgSvg: "images/potato-chips/background-ingredients.svg"
     },
     {
       number: "02",
-      titleTop: "Kerala",
-      titleBottom: "Banana",
+      titleTop: "Perfect",
+      titleBottom: "Presentation",
       description: "Authentic, crunchy banana<br>chips carefully fried in<br>pure coconut oil.",
       color: "#6D0109",
       image: "images/kerala-banana-chips/kerala-banana-chips-image.png",
@@ -46,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       number: "03",
-      titleTop: "Nacho",
-      titleBottom: "Chips",
+      titleTop: "Freshness",
+      titleBottom: "Sealed",
       description: "Crunchy corn tortilla chips<br>loaded with bold<br>and zesty flavors.",
       color: "#301D11",
       image: "images/nacho-chips/nacho-chips.png",
@@ -55,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       number: "04",
-      titleTop: "Premium",
-      titleBottom: "Popcorn",
+      titleTop: "Quality",
+      titleBottom: "Delivered",
       description: "High-Quality Flexible Packaging<br>Solutions For Snacks That<br>Stand Out On Every Shelf.",
       color: "#3690D3",
       image: "images/popcorn-chips/popcorn-chips-image.webp",
@@ -64,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       number: "05",
-      titleTop: "Pudina",
-      titleBottom: "Blast",
+      titleTop: "Protecting",
+      titleBottom: "Taste",
       description: "Light & Crunchy Corn Puffs<br>Seasoned With Refreshing Mint<br>For A Bold Experience.",
       color: "#752988",
       image: "images/corn-puff-chips/corn-puff-image.png",
@@ -73,8 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       number: "06",
-      titleTop: "Grain",
-      titleBottom: "Waves",
+      titleTop: "Preserving",
+      titleBottom: "Freshness",
       description: "Delicious multi-grain chips<br>packed with wholesome goodness<br>and irresistible taste.",
       color: "#0766C3",
       image: "images/grain-waves-chips/grain-waves-image.png",
@@ -82,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       number: "07",
-      titleTop: "Boondhi",
-      titleBottom: "Mix",
+      titleTop: "Sustainable",
+      titleBottom: "Packaging",
       description: "A traditional spicy mix<br>perfect for tea time<br>and festive snacking.",
       color: "#232321",
       image: "images/boondhi-mix/boondhi-mix-chips-image.png",
@@ -91,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       number: "08",
-      titleTop: "Premium",
-      titleBottom: "Almond",
+      titleTop: "Superior",
+      titleBottom: "Performance",
       description: "Carefully selected premium<br>roasted almonds for<br>a healthy energy boost.",
       color: "#172A6B",
       image: "images/almond/almond-image.webp",
@@ -100,8 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       number: "09",
-      titleTop: "Potato",
-      titleBottom: "Crisps",
+      titleTop: "Production",
+      titleBottom: "to Plate",
       description: "Thick cut, gourmet<br>potato crisps seasoned<br>with premium spices.",
       color: "#569517",
       image: "images/potato-crips/potato-crips.png",
@@ -233,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
       bgCard.style.backgroundColor = prod.color;
       ctaButton.style.backgroundColor = prod.color;
       ctaButton.style.boxShadow = `0 10px 20px ${prod.color}66`;
+      document.documentElement.style.setProperty('--theme-color', prod.color);
       // categoryText.style.color = prod.color; // User wants this to always be black
 
       dots.forEach(dot => {
@@ -311,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         ingredientsContainer.classList.remove('ingredients-exit');
         ingredientsContainer.classList.add('ingredients-enter');
-      }, 1500);
+      }, 500);
 
       updateActiveStates(newIndex);
       currentIndex = newIndex;
@@ -352,23 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Mobile Menu Toggle
-  const mobileToggle = document.querySelector('.mobile-toggle');
-  const navLinks = document.querySelector('.nav-links');
 
-  mobileToggle.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-    if (navLinks.style.display === 'flex') {
-      navLinks.style.position = 'absolute';
-      navLinks.style.top = '100%';
-      navLinks.style.left = '0';
-      navLinks.style.width = '100%';
-      navLinks.style.background = '#fff';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.padding = '20px';
-      navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-    }
-  });
 
   // Initialize
   // Inject the first product's ingredients SVG on load
@@ -452,12 +446,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Navbar Scroll Effect
   const navbar = document.querySelector('.navbar');
   const heroSection = document.querySelector('.hero');
-  
+
   window.addEventListener('scroll', () => {
     if (heroSection && navbar) {
       const heroBottom = heroSection.getBoundingClientRect().bottom;
       const navbarHeight = navbar.offsetHeight;
-      
+
       if (heroBottom <= navbarHeight) {
         navbar.classList.add('scrolled');
       } else {
@@ -473,18 +467,18 @@ document.addEventListener('DOMContentLoaded', () => {
   productImageContainer.addEventListener('mousemove', (e) => {
     // Suspend floating animation while hovering
     productImageContainer.classList.remove('is-floating');
-    
+
     const rect = productImageContainer.getBoundingClientRect();
-    const x = e.clientX - rect.left; 
-    const y = e.clientY - rect.top; 
-    
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     // Calculate rotation angles (max 15 degrees)
-    const rotateX = ((y - centerY) / centerY) * -20; 
+    const rotateX = ((y - centerY) / centerY) * -20;
     const rotateY = ((x - centerX) / centerX) * 20;
-    
+
     // Apply 3D transform
     productImage.style.transform = `perspective(1000px) scale(1.05) translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
@@ -492,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
   productImageContainer.addEventListener('mouseleave', () => {
     // Reset transform smoothly
     productImage.style.transform = '';
-    
+
     // Resume floating animation if not currently sliding
     if (!isAnimating) {
       productImageContainer.classList.add('is-floating');
@@ -524,7 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })();
 
         const getRotation = () => {
-          switch(positionType) {
+          switch (positionType) {
             case 'leftEdge':
               return -10 * (1 - normalizedPosition * 3);
             case 'rightEdge':
@@ -536,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const rotation = getRotation();
         const smoothRotation = Math.round(rotation * 100) / 100;
-        
+
         // Cards share the exact same vertical alignment
         const yOffset = 0;
 
@@ -589,12 +583,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (clampedProgress > 0.5) {
           // The exact amount of overflow that needs to be scrolled
           const maxTranslate = scrollContainer.scrollWidth - window.innerWidth;
-          
+
           // normalized progress from 0 to 1 for the second half of the scroll
           const progress = (clampedProgress - 0.5) * 2;
-          
+
           // Easing function for smoother stop
-          const easeProgress = progress * (2 - progress); 
+          const easeProgress = progress * (2 - progress);
           const smoothedTranslateX = -maxTranslate * easeProgress;
 
           scrollContainer.style.transform = `translateY(-50%) translateX(${smoothedTranslateX}px)`;
@@ -653,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
             stickyHeading.style.position = "absolute";
           }
           scrollContainer.style.position = "absolute";
-          
+
           if (parentRect.top > 0) {
             if (stickyHeading) stickyHeading.style.top = "50vh";
             scrollContainer.style.top = "50vh";
@@ -680,7 +674,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Call initialization function
   initializePanelCarousels();
 
-  // --- Products Background Video (Scroll Canvas) ---
   function initializeProductsScrollVideo() {
     const section = document.getElementById("products");
     const canvas = document.getElementById("products-bg-canvas");
@@ -689,19 +682,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const context = canvas.getContext("2d");
     const frameCount = 144;
     const images = [];
-    
+
     canvas.width = 1920;
     canvas.height = 1080;
-    
-    // Set initial opacity to 0
-    canvas.style.opacity = 0;
-    // Add transition for smooth fade
-    canvas.style.transition = "opacity 0.3s ease";
-    
+
+    // Set initial opacity to 1 so the starting image is visible immediately
+    canvas.style.opacity = 1;
+
     for (let i = 0; i < frameCount; i++) {
       const img = new Image();
       img.src = `images/products/background-new-images/${(i + 1).toString().padStart(5, '0')}.webp`;
       images.push(img);
+      if (i === 0) {
+        img.onload = () => {
+          context.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+      }
     }
 
     function handleScroll() {
@@ -713,13 +709,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrollTop = window.scrollY;
       const scrollProgress = (scrollTop - parentTop) / (parentHeight - viewportHeight);
       const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-
-      // Fade in the canvas after scrolling starts (e.g., after 5% scroll)
-      if (scrollProgress > 0.05) {
-        canvas.style.opacity = 1;
-      } else {
-        canvas.style.opacity = 0;
-      }
 
       if (images.length > 0) {
         const frameIndex = Math.min(frameCount - 1, Math.floor(clampedProgress * frameCount));
@@ -746,10 +735,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const context = canvas.getContext("2d");
     const frameCount = 192;
     const images = [];
-    
+
     canvas.width = 1920;
     canvas.height = 1080;
-    
+
     for (let i = 0; i < frameCount; i++) {
       const img = new Image();
       img.src = `images/products/webp-folder/${(i + 1).toString().padStart(5, '0')}.webp`;
@@ -830,15 +819,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cardsContainer = document.querySelector('.cards');
     const cards = document.querySelectorAll('.card');
-    
+    const benefitsSection = document.getElementById('benefits');
+
     if (!cardsContainer || cards.length === 0) return;
+
+    // Define background colors corresponding to each card
+    const bgColors = [
+      '#fbf8cc', // Card 1: Freshness (Soft Yellow)
+      '#ffcfd2', // Card 2: Leak-Proof (Soft Red)
+      '#b9fbc0', // Card 3: Shelf Life (Soft Green)
+      '#a3c4f3', // Card 4: Print Quality (Soft Blue)
+      '#cfbaf0'  // Card 5: Eco-Friendly (Soft Purple)
+    ];
+
+    if (benefitsSection) {
+      benefitsSection.style.transition = 'background-color 0.8s ease';
+      benefitsSection.style.backgroundColor = bgColors[0];
+    }
+
+    let currentBgIndex = -1;
+    // Update background color based on active card
+    window.addEventListener('scroll', () => {
+      if (!benefitsSection) return;
+      let activeIndex = 0;
+      
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        // The card sticks at offsetTop = 20 + index * 20.
+        // We set it as active if it is within half the screen of its sticky position.
+        const stickyPosition = 20 + index * 20;
+        if (rect.top <= stickyPosition + window.innerHeight / 2) {
+          activeIndex = index;
+        }
+      });
+      
+      if (currentBgIndex !== activeIndex) {
+        currentBgIndex = activeIndex;
+        benefitsSection.style.backgroundColor = bgColors[activeIndex % bgColors.length];
+      }
+    });
 
     cardsContainer.style.setProperty('--cards-count', cards.length);
     // Use a robust way to set card height after CSS is applied
     setTimeout(() => {
       cardsContainer.style.setProperty('--card-height', `${cards[0].clientHeight}px`);
     }, 100);
-    
+
     Array.from(cards).forEach((card, index) => {
       const offsetTop = 20 + index * 20;
       card.style.paddingTop = `${offsetTop}px`;
@@ -865,7 +891,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-  
+
   setTimeout(initBenefitsCards, 300);
 
   // --- ScrollSpy Navigation ---
@@ -875,7 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateScrollSpy() {
       let current = '';
-      
+
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -930,3 +956,57 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initScrollReveal();
 });
+
+// --- About Us Image Swapper ---
+const mainImgEl = document.querySelector('.about-img-main img');
+const topImgEl = document.querySelector('.about-img-top img');
+const bottomImgEl = document.querySelector('.about-img-bottom img');
+
+if (mainImgEl && topImgEl && bottomImgEl) {
+  const swapImages = (clickedImgEl) => {
+    mainImgEl.style.opacity = 0;
+    clickedImgEl.style.opacity = 0;
+
+    setTimeout(() => {
+      const tempSrc = mainImgEl.src;
+      const tempAlt = mainImgEl.alt;
+      mainImgEl.src = clickedImgEl.src;
+      mainImgEl.alt = clickedImgEl.alt;
+      clickedImgEl.src = tempSrc;
+      clickedImgEl.alt = tempAlt;
+
+      mainImgEl.style.opacity = 1;
+      clickedImgEl.style.opacity = 1;
+    }, 350); // increased for smoother transition
+  };
+
+  mainImgEl.style.transition = 'opacity 0.35s ease-in-out, transform 0.5s ease';
+  topImgEl.style.transition = 'opacity 0.35s ease-in-out, transform 0.5s ease';
+  bottomImgEl.style.transition = 'opacity 0.35s ease-in-out, transform 0.5s ease';
+
+  let nextSwapIsTop = true;
+  let aboutAutoSlide;
+
+  const resetAboutAutoSlide = () => {
+    clearInterval(aboutAutoSlide);
+    aboutAutoSlide = setInterval(() => {
+      swapImages(nextSwapIsTop ? topImgEl : bottomImgEl);
+      nextSwapIsTop = !nextSwapIsTop;
+    }, 3000);
+  };
+
+  topImgEl.addEventListener('click', () => {
+    swapImages(topImgEl);
+    nextSwapIsTop = false; // Next auto swap should be bottom
+    resetAboutAutoSlide();
+  });
+
+  bottomImgEl.addEventListener('click', () => {
+    swapImages(bottomImgEl);
+    nextSwapIsTop = true; // Next auto swap should be top
+    resetAboutAutoSlide();
+  });
+
+  // Start auto slide
+  resetAboutAutoSlide();
+}
