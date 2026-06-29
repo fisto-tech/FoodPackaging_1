@@ -15,22 +15,30 @@
 </head>
 
 <body>
-  <!-- Preloader -->
   <div class="preloader" id="preloader">
     <div class="preloader-content">
-      <div class="pl">
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
-        <div class="pl__chip"></div>
+      <div class="packaging-icon">
+        <svg viewBox="0 0 120 150" width="80" height="100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Zipper & Top -->
+          <path d="M 20 20 L 100 20" fill="none" stroke="#FECD02" stroke-width="6" stroke-linecap="round"/>
+          <path d="M 18 30 L 102 30" fill="none" stroke="#FECD02" stroke-width="6" stroke-linecap="round"/>
+          <path d="M 16 40 L 104 40" fill="none" stroke="#FECD02" stroke-width="6" stroke-linecap="round"/>
+          
+          <!-- Pouch Body -->
+          <path d="M 16 40 C 16 40 5 90 5 130 C 5 140 15 145 25 145 L 95 145 C 105 145 115 140 115 130 C 115 90 104 40 104 40 Z" fill="none" stroke="#FECD02" stroke-width="6" stroke-linejoin="round"/>
+          
+          <!-- Animated Chip -->
+          <!-- <g class="falling-chip">
+            <ellipse cx="60" cy="0" rx="15" ry="22" fill="#FECD02" />
+          </g> -->
+        </svg>
+      </div>
+      <div class="loading-wrapper">
+        <div class="loading-text">Loading...</div>
+        <div class="loading-bar-bg">
+          <div class="loading-bar" id="loading-bar"></div>
+        </div>
+        <div class="loading-percentage" id="loading-percentage">0%</div>
       </div>
     </div>
   </div>
@@ -202,52 +210,55 @@
   </section>
 
   <section id="products" class="scroll-container-parent">
+    <div class="sticky-heading">
+      <h2>Premium<br><span class="highlight">Packaging</span></h2>
+    </div>
     <div class="products-video-wrapper">
       <canvas id="products-bg-canvas" class="products-bg-canvas"></canvas>
     </div>
     <div class="scroll-container">
       <div class="panel">
-        <h2>Potato<br><span class="styled-text">Chips</span></h2>
+        <h2>Potato <span class="styled-text">  Chips</span></h2>
         <img src="images/products/potato-chips.webp" alt="Premium Packaging">
         <h3>Premium quality potato chips sealed in innovative packaging for lasting crispy freshness.</h3>
       </div>
       <div class="panel">
-        <h2>Banana<br><span class="styled-text">Chips</span></h2>
+        <h2>Banana<br><span class="styled-text">  Chips</span></h2>
         <img src="images/products/kerala-banana-chips.webp" alt="Perfect Presentation">
         <h3>Authentic, crunchy banana chips carefully fried in pure coconut oil.</h3>
       </div>
       <div class="panel">
-        <h2>Nacho<br><span class="styled-text">Chips</span></h2>
+        <h2>Nacho<br><span class="styled-text">  Chips</span></h2>
         <img src="images/products/nacho-chips.webp" alt="Freshness Sealed">
         <h3>Crunchy corn tortilla chips loaded with bold and zesty flavors.</h3>
       </div>
       <div class="panel">
-        <h2>Premium<br><span class="styled-text">Popcorn</span></h2>
+        <h2>Premium<br><span class="styled-text">  Popcorn</span></h2>
         <img src="images/products/popcorn.webp" alt="Quality Delivered">
         <h3>High-Quality Flexible Packaging Solutions For Snacks That Stand Out.</h3>
       </div>
       <div class="panel">
-        <h2>Corn<br><span class="styled-text">Puffs</span></h2>
+        <h2>Corn<br><span class="styled-text">  Puffs</span></h2>
         <img src="images/products/corn-puffs.webp" alt="Protecting Taste">
         <h3>Light & Crunchy Corn Puffs Seasoned With Refreshing Mint For A Bold Experience.</h3>
       </div>
       <div class="panel">
-        <h2>Grain<br><span class="styled-text">Waves</span></h2>
+        <h2>Grain<br><span class="styled-text">  Waves</span></h2>
         <img src="images/products/grain-waves.webp" alt="Preserving Freshness">
         <h3>Delicious multi-grain chips packed with wholesome goodness and irresistible taste.</h3>
       </div>
       <div class="panel">
-        <h2>Boondhi<br><span class="styled-text">Mix</span></h2>
+        <h2>Boondhi<br><span class="styled-text">  Mix</span></h2>
         <img src="images/products/boondhi-mix.webp" alt="Sustainable Packaging">
         <h3>A traditional spicy mix perfect for tea time and festive snacking.</h3>
       </div>
       <div class="panel">
-        <h2>Premium<br><span class="styled-text">Almonds</span></h2>
+        <h2>Premium<br><span class="styled-text">  Almonds</span></h2>
         <img src="images/products/almond.webp" alt="Superior Performance">
         <h3>Carefully selected premium roasted almonds for a healthy energy boost.</h3>
       </div>
       <div class="panel">
-        <h2>Potato<br><span class="styled-text">Crips</span></h2>
+        <h2>Potato<br><span class="styled-text">  Crips</span></h2>
         <img src="images/products/potato-crips.webp" alt="Production To Plate">
         <h3>Thick cut, gourmet potato crisps seasoned with premium spices.</h3>
       </div>

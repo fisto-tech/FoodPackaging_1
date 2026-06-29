@@ -4,25 +4,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadingBar = document.getElementById('loading-bar');
   const loadingText = document.getElementById('loading-percentage');
 
-  let progress = 0;
-  const loadingInterval = setInterval(() => {
-    progress += Math.floor(Math.random() * 10) + 5;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(loadingInterval);
-      setTimeout(() => {
-        if (preloader) preloader.classList.add('hidden');
-        setTimeout(() => {
-          document.body.classList.add('preloader-done');
-          if (typeof currentIndex !== 'undefined' && currentIndex === 0 && ingredientsContainer.innerHTML !== '') {
-            ingredientsContainer.classList.add('ingredients-enter');
-          }
-        }, 1500);
-      }, 500);
+  if (sessionStorage.getItem('preloaderShown')) {
+    if (preloader) {
+      preloader.style.display = 'none';
     }
-    if (loadingBar) loadingBar.style.width = `${progress}%`;
-    if (loadingText) loadingText.innerText = `${progress}%`;
-  }, 100);
+    document.body.classList.add('preloader-done');
+    if (typeof currentIndex !== 'undefined' && currentIndex === 0 && typeof ingredientsContainer !== 'undefined' && ingredientsContainer.innerHTML !== '') {
+      ingredientsContainer.classList.add('ingredients-enter');
+    }
+  } else {
+    let progress = 0;
+    const loadingInterval = setInterval(() => {
+      progress += Math.floor(Math.random() * 10) + 5;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(loadingInterval);
+        setTimeout(() => {
+          if (preloader) preloader.classList.add('hidden');
+          sessionStorage.setItem('preloaderShown', 'true');
+          setTimeout(() => {
+            document.body.classList.add('preloader-done');
+            if (typeof currentIndex !== 'undefined' && currentIndex === 0 && typeof ingredientsContainer !== 'undefined' && ingredientsContainer.innerHTML !== '') {
+              ingredientsContainer.classList.add('ingredients-enter');
+            }
+          }, 1500);
+        }, 500);
+      }
+      if (loadingBar) loadingBar.style.width = `${progress}%`;
+      if (loadingText) loadingText.innerText = `${progress}%`;
+    }, 100);
+  }
 
   // Mobile Menu Toggle
   const mobileToggle = document.querySelector('.mobile-toggle');
@@ -556,7 +567,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Sticky heading opacity management
         if (stickyHeading) {
           const headingOpacity = 1 - Math.min(1, clampedProgress * 2);
+          const headingTranslateX = (1 - headingOpacity) * 500; // Move up to 500px right
           stickyHeading.style.opacity = headingOpacity;
+          stickyHeading.style.transform = `translate(calc(-50% + ${headingTranslateX}px), -50%)`;
         }
 
         // First stage: slide in cards from right
