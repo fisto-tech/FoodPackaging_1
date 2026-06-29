@@ -515,7 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ?.querySelector(".sticky-heading");
 
       function calculateCardTransform(panel, index) {
-        const referenceWidth = 1900;
+        const referenceWidth = window.innerWidth;
         const panelRect = panel.getBoundingClientRect();
 
         // Calculate normalized position (0 to 1) based on screen width
@@ -594,8 +594,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Second stage: slide cards to the left
         if (clampedProgress > 0.5) {
-          // The exact amount of overflow that needs to be scrolled
-          const maxTranslate = scrollContainer.scrollWidth - window.innerWidth;
+          // The exact amount of overflow that needs to be scrolled, prevent negative values on large screens
+          const maxTranslate = Math.max(0, scrollContainer.scrollWidth - window.innerWidth);
 
           // normalized progress from 0 to 1 for the second half of the scroll
           const progress = (clampedProgress - 0.5) * 2;
